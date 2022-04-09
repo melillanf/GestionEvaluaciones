@@ -12,6 +12,161 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
+        //Variables y datos iniciales
+        Asignatura lenguaje = new Asignatura();
+        Asignatura historia = new Asignatura();
+        //creando pregunta de Lenguaje
+        ArrayList<String> alternativasLeng = new ArrayList<>();
+        alternativasLeng.add("Tomate");
+        alternativasLeng.add("Sonrisa");
+        alternativasLeng.add("Felicidad");
+        String enunciadoLeng = "Que termino no esta relacionado con la palabra 'Alegria'?";
+        String respuestaLeng = "Tomate";
+        String tematicaLeng = "Sinonimos";
+        int puntos = 5;
+        Pregunta preguntaLeng = new Pregunta(enunciadoLeng, respuestaLeng, tematicaLeng, puntos, alternativasLeng);
+        lenguaje.addPregunta(preguntaLeng);
+        //creando pregunta Historia
+        ArrayList<String> alternativasHist = new ArrayList<>();
+        alternativasHist.add("1991");
+        alternativasHist.add("1820");
+        alternativasHist.add("1962");
+        String enunciadoHist = "En que anio se se desarrollo el Mundial de Futbol en Chile?";
+        String respuestaHist = "1962";
+        String tematicaHist = "Sucesos historicos de Chile";
+        Pregunta preguntaHist = new Pregunta(enunciadoHist, respuestaHist, tematicaHist, puntos, alternativasHist);
+        historia.addPregunta(preguntaHist);
+        //HashMap listaAlumnos
+        Alumno estudiante1 = new Alumno("Mirko Jozic","5.131.266-6","8vo A");
+        Alumno estudiante2 = new Alumno("Peineta Garces","7.771.313-0", "8vo B");
+        HashMap<String, Alumno> listaAlumnos = new HashMap<>();
+        listaAlumnos.put(estudiante1.getRut(), estudiante1);
+        listaAlumnos.put(estudiante2.getRut(), estudiante2);
+        //Menu
+        int op= 99;
+        Scanner lector = new Scanner(System.in);
+        System.out.println("---------------------------------------------");
+        System.out.println("Menu Principal\n");
+        System.out.println("Bienvenido/a\n");
+        System.out.println("Elige una opcion:\n");
+        do{
+            System.out.println("1.Crear pregunta y almacenarla");//Elegir en que asignatura se almacenara
+            
+            System.out.println("2.Mostrar preguntas");//Show preguntas por Asignatura o todas
+            System.out.println("3.Buscar alumno");//PARA ESTO HAY QUE IMPLEMENTAR LA CLASE COLEGIO CONCHETUMARRRRRRRRRREEEEEEEEEEEEEEEEEE
+            System.out.println("4.Guardar alumno");
+            op = lector.nextInt();
+            switch(op){
+                case 1:{//Crear y almacenar pregunta
+                    System.out.println("Escriba el enunciado de la pregunta:/n");
+                    String auxEnunciado = lector.nextLine();
+                    System.out.println("Agregue las alternativas a continuacion:/nOpcion 1: ");
+                    String alternativa1 = lector.nextLine();
+                    System.out.println("Opcion 2:/n");
+                    String alternativa2 = lector.nextLine();
+                    System.out.println("Opcion 3:/n");
+                    String alternativa3 = lector.nextLine();
+                    System.out.println("Escriba la respuesta correcta de la pregunta:/n");
+                    String correcta = lector.nextLine();
+                    ArrayList<String> alternativas = new ArrayList<>();
+                    alternativas.add(alternativa1);
+                    alternativas.add(alternativa2);
+                    alternativas.add(alternativa3);
+                    
+                    
+                    System.out.println("Ingrese la asignatura asociada: /n");
+                    String asignatura = lector.nextLine();
+                    System.out.println("Ingrese la tematica asociada a la asignatura:/n");
+                    String tematica = lector.nextLine();
+                    System.out.println("Ingrese el puntaje de la pregunta:/n(5pts: facil / 10pts = intermedia / 15pts = dificil)/n");
+                    int puntaje = lector.nextInt();
+                    
+                    Pregunta nueva = new Pregunta(auxEnunciado, correcta,tematica, puntaje, alternativas);
+                    if(asignatura.equals("lenguaje")){
+                        lenguaje.addPregunta(nueva);
+                    }
+                    if(asignatura.equals("historia")){
+                        historia.addPregunta(nueva);
+                    }
+                    break;
+                    
+                    
+                    
+                }
+                case 2:{//Mostrar preguntas dependiendo el criterio: asignatura especifica o todas
+                    System.out.println("Seleccione el criterio: 1.-Todas 2.-Historia 3.-Lenguaje");
+                    int opc1 = lector.nextInt();
+                    switch(opc1){
+                        case 1:{
+                            
+                            
+                            for(int i=0;i<historia.getBancoDePreguntas().size();i++){//Proceso de asignatura Historia
+                                ArrayList<Pregunta> auxHistoria = new ArrayList<>();                                                            
+                                auxHistoria.addAll(historia.getBancoDePreguntas());    
+                                Pregunta auxPregunta = auxHistoria.get(i); 
+                                System.out.println("Enunciado:\n"+auxPregunta.getEnunciado()+"\n");
+                                System.out.println("Opcion 1: "+auxPregunta.getAlternativas().get(0)+"\n");
+                                System.out.println("Opcion 2: "+auxPregunta.getAlternativas().get(1)+"\n");
+                                System.out.println("Opcion 3: "+auxPregunta.getAlternativas().get(2)+"\n");
+                                System.out.println("Asignatura: Historia");
+                                System.out.println("Tematica: "+auxPregunta.getTematica()+"\n");
+                            }
+                            for(int i=0;i<lenguaje.getBancoDePreguntas().size();i++){//Proceso de asignatura Lenguaje
+                                ArrayList<Pregunta> auxLenguaje = new ArrayList<>();                                                            
+                                auxLenguaje.addAll(lenguaje.getBancoDePreguntas());    
+                                Pregunta auxPregunta = auxLenguaje.get(i); 
+                                System.out.println("Enunciado:\n"+auxPregunta.getEnunciado()+"\n");
+                                System.out.println("a)"+auxPregunta.getAlternativas().get(0)+"\n");
+                                System.out.println("b)"+auxPregunta.getAlternativas().get(1)+"\n");
+                                System.out.println("c)"+auxPregunta.getAlternativas().get(2)+"\n");
+                                System.out.println("Asignatura: Lenguaje\n");
+                                System.out.println("Tematica: "+auxPregunta.getTematica()+"\n");
+                                System.out.println("Puntaje: "+auxPregunta.getPuntos()+"\n");
+                               
+                            }
+                            break;
+                        }
+                        case 2:{
+                            for(int i=0;i<historia.getBancoDePreguntas().size();i++){//Proceso de asignatura Historia
+                                ArrayList<Pregunta> auxHistoria = new ArrayList<>();                                                            
+                                auxHistoria.addAll(historia.getBancoDePreguntas());    
+                                Pregunta auxPregunta = auxHistoria.get(i); 
+                                System.out.println("Enunciado:\n"+auxPregunta.getEnunciado()+"\n");
+                                System.out.println("Opcion 1: "+auxPregunta.getAlternativas().get(0)+"\n");
+                                System.out.println("Opcion 2: "+auxPregunta.getAlternativas().get(1)+"\n");
+                                System.out.println("Opcion 3: "+auxPregunta.getAlternativas().get(2)+"\n");
+                                System.out.println("Asignatura: Historia");
+                                System.out.println("Tematica: "+auxPregunta.getTematica()+"\n");
+                            }
+                            break;
+                        }
+                        case 3:{
+                            for(int i=0;i<lenguaje.getBancoDePreguntas().size();i++){//Proceso de asignatura Lenguaje
+                                ArrayList<Pregunta> auxLenguaje = new ArrayList<>();                                                            
+                                auxLenguaje.addAll(lenguaje.getBancoDePreguntas());    
+                                Pregunta auxPregunta = auxLenguaje.get(i); 
+                                System.out.println("Enunciado:\n"+auxPregunta.getEnunciado()+"\n");
+                                System.out.println("a)"+auxPregunta.getAlternativas().get(0)+"\n");
+                                System.out.println("b)"+auxPregunta.getAlternativas().get(1)+"\n");
+                                System.out.println("c)"+auxPregunta.getAlternativas().get(2)+"\n");
+                                System.out.println("Asignatura: Lenguaje\n");
+                                System.out.println("Tematica: "+auxPregunta.getTematica()+"\n");
+                                System.out.println("Puntaje: "+auxPregunta.getPuntos()+"\n");                             
+                            }
+                            break;
+                        }
+                    }
+                }
+                case 3:{//Buscar alumno hashmap de Colegio
+                
+                }
+                case 4:{//Crear y guardar alumno en hashmap de Colegio
+                
+                }
+            }
+        }while(op!=0);
         
+
+
     }
 }

@@ -10,11 +10,21 @@ package gestionevaluaciones;
  * @author melil
  */
 public class Profesor {
-    String nombre;
-    String rut;
+    private String rut;
+    private String nombre;
+    private Asignatura ramoAsignado;
 
-    public Profesor(String nombre, String rut) {
+    public Profesor(String rut, String nombre, Asignatura ramoAsignado) {
+        this.rut = rut;
         this.nombre = nombre;
+        this.ramoAsignado = ramoAsignado;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
         this.rut = rut;
     }
 
@@ -26,11 +36,12 @@ public class Profesor {
         this.nombre = nombre;
     }
 
-    public String getRut() {
-        return rut;
+    public Asignatura getRamoAsignado() {
+        return ramoAsignado;
     }
 
-    public void setRut(String rut) {
-        this.rut = rut;
+    public void setRamoAsignado(Asignatura ramoAsignado) {
+        this.ramoAsignado = ramoAsignado;
     }
+    
 }

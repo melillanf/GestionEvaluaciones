@@ -11,12 +11,26 @@ import java.util.ArrayList;
  *
  * @author melil
  */
-public class Alumno {
+public class Alumno {//Esta clase no será utilizada aún 
    private String nombre;
    private String rut;
-   private Libreta notas;
-   
-   public String getNombre() {
+   private String curso;//Ej: 8vo A, 8vo B, 8vo C, etc
+
+    public Alumno(String nombre, String rut, String curso) {
+        this.nombre = nombre;
+        this.rut = rut;
+        this.curso = curso;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+
+    public String getNombre() {
         return nombre;
     }
 
