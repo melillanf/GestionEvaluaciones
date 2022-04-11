@@ -12,13 +12,30 @@ import java.util.*;
 public class Colegio {
     private HashMap<String, Alumno> mapAlumnos;
     private HashMap<String, Profesor> mapProfesor;
+
+    public HashMap<String, Alumno> getMapAlumnos() {
+        return mapAlumnos;
+    }
+
+    public void setMapAlumnos(HashMap<String, Alumno> mapAlumnos) {
+        this.mapAlumnos = mapAlumnos;
+    }
+
+    public HashMap<String, Profesor> getMapProfesor() {
+        return mapProfesor;
+    }
+
+    public void setMapProfesor(HashMap<String, Profesor> mapProfesor) {
+        this.mapProfesor = mapProfesor;
+    }
+    
     
     public Colegio(){
         this.mapAlumnos = new HashMap<>();
         this.mapProfesor = new HashMap<>();
     }
     
-    public void addAlumno(Alumno student){
+    public void addAlumno(Alumno student){//Agregar alumno sin necesidad de pasar por parametro el rut
         this.mapAlumnos.put(student.getRut(), student);
     }
     
@@ -52,9 +69,11 @@ public class Colegio {
     public void searchAlumno(String curso){//Mostrar alumnos de un curso indicado
         for(Alumno aux: this.mapAlumnos.values()){
             if(aux.getCurso().equals(curso)){
-                System.out.println("Nombre del alumno:"+aux.getNombre()+"/n");
-                System.out.println("Curso:"+aux.getCurso()+"/n");
+                System.out.println("Nombre del alumno:"+aux.getNombre()+"\n");
+                System.out.println("Curso:"+aux.getCurso()+"\n");
             }
         }
     }
+    
+    
 }

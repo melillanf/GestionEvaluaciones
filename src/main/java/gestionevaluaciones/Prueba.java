@@ -14,12 +14,40 @@ public class Prueba {
     private String tematica;
     private int puntaje;
     private int nota;
+    private Profesor profesorEncargado;
+    private Alumno alumno;
 
-    public Prueba(String tematica, int puntaje, int nota) {
+    public Prueba(String tematica, int puntaje, int nota, Profesor profesorEncargado, Alumno alumno){
         this.tematica = tematica;
         this.puntaje = puntaje;
         this.nota = nota;
+        this.profesorEncargado = profesorEncargado;
+        this.alumno = alumno;
         this.preguntas = new ArrayList<>();
+    }
+
+    public ArrayList<Pregunta> getPreguntas() {
+        return preguntas;
+    }
+
+    public void setPreguntas(ArrayList<Pregunta> preguntas) {
+        this.preguntas = preguntas;
+    }
+
+    public Profesor getProfesorEncargado() {
+        return profesorEncargado;
+    }
+
+    public void setProfesorEncargado(Profesor profesorEncargado) {
+        this.profesorEncargado = profesorEncargado;
+    }
+
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
     }
     
     
