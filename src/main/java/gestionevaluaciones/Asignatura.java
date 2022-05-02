@@ -11,13 +11,13 @@ import java.util.*;
  * @author melil
  */
 public class Asignatura {
-    private ArrayList<Pregunta> bancoDePreguntas; //Almacena todas las preguntas de la asignatura creada
+    @SuppressWarnings("FieldMayBeFinal")
+    private HashMap<Integer,Pregunta> bancoDePreguntas = new HashMap<>(); //Almacena todas las preguntas de la asignatura creada / key >=1
+    @SuppressWarnings("FieldMayBeFinal")
+    private HashMap<String, Alumno> listaAlumnos = new HashMap<>();//sera utilizado para obtener informacion de estadisticas, etc
+    private String nombreAsignatura;
     
-    public Asignatura(){
-        this.bancoDePreguntas = new ArrayList<Pregunta>();
-    }
-
-    public ArrayList<Pregunta> getBancoDePreguntas() {
+    public HashMap<Integer, Pregunta> getBancoDePreguntas() {
         return bancoDePreguntas;
     }
    
@@ -27,14 +27,22 @@ public class Asignatura {
         }
         else{
             for(int i=0; i<this.bancoDePreguntas.size();i++){//Mostrar por pantalla el array
-                System.out.println(this.bancoDePreguntas.get(i).getEnunciado()+"\n");
+                System.out.println("ID: "+this.bancoDePreguntas.get(i).getIdPregunta()+"-"+this.bancoDePreguntas.get(i).getEnunciado()+"\n");
             }
         }
     }
-    
-    public void addPregunta(Pregunta question){
-        this.bancoDePreguntas.add(question);
+    public void createAddPregunta(){//Crea y anhade una pregunta creada manualmente
+        Pregunta aux = new Pregunta();
+        aux.crearPregunta();
+        aux.setIdPregunta(this.bancoDePreguntas.size()+1);
+        this.bancoDePreguntas.put(aux.getIdPregunta(), aux);
     }
+    public void addPregunta(Pregunta question){
+        int idNueva = this.bancoDePreguntas.size();
+        question.setIdPregunta(idNueva);
+        this.bancoDePreguntas.put(question.getIdPregunta(),question);
+    }
+    
     //Sobrecarga de busqueda de preguntas
     public void buscarPreguntas(String tematica){
          if(this.bancoDePreguntas.isEmpty()){ //Verificacion inicial 
@@ -67,5 +75,30 @@ public class Asignatura {
          } 
     }
     
+    public Pregunta eliminarPregunta(int id){
+        
+        Pregunta auxEliminada = this.bancoDePreguntas.remove(id);
+        return auxEliminada;
+    }
     
+    public void modPregunta(){
+        System.out.println("Preguntas almacenadas en la asignatura: \n");
+        this.mostrarPreguntas();
+        System.out.println("Ingrese la id de la pregunta que desea modificar");
+        Scanner lector = new Scanner(System.in);
+        int id = lector.nextInt();
+        Pregunta elegida = this.bancoDePreguntas.get(id);
+        elegida.modPregunta();
+    }
+    public HashMap getListaAlumnos(){
+        return this.listaAlumnos;
+    }
+    
+    public String getNombreAsignatura(){
+        return this.nombreAsignatura;
+    }
+    
+    public void setNombreAsignatura(String name){
+        this.nombreAsignatura = name;
+    }
 }

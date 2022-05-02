@@ -5,7 +5,7 @@
  */
 package gestionevaluaciones;
 
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  *
@@ -14,20 +14,14 @@ import java.util.ArrayList;
 public class Alumno {//Esta clase no será utilizada aún 
    private String nombre;
    private String rut;
-   private String curso;//Ej: 8vo A, 8vo B, 8vo C, etc
+   private HashMap <String,ArrayList> notas = new HashMap<>();//Clave nombre de asignatura / almacena las notas de cada ramo
 
-    public Alumno(String nombre, String rut, String curso) {
+    public Alumno(String nombre, String rut) {
         this.nombre = nombre;
         this.rut = rut;
-        this.curso = curso;
     }
-
-    public String getCurso() {
-        return curso;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public Alumno(){
+    
     }
 
     public String getNombre() {
@@ -45,5 +39,27 @@ public class Alumno {//Esta clase no será utilizada aún
     public void setRut(String rut) {
         this.rut = rut;
     }
+
+    public HashMap<String, ArrayList> getNotas() {
+        return notas;
+    }
+
+    public void setNotas(HashMap<String, ArrayList> notas) {
+        this.notas = notas;
+    }
+   
+    public void crearAlumno(){
+        
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingrese el nombre del alumno:\n");
+        String name = lector.nextLine();
+        System.out.println("Ingrese el rut del alumno:\n");
+        String run = lector.nextLine();
+        this.setNombre(name);
+        this.setRut(run);
+        
+    }
+   
+
    
 }

@@ -63,17 +63,9 @@ public class Colegio {
         }
         Alumno aux = this.mapAlumnos.get(rut);
         System.out.println("Nombre del alumno:/n"+aux.getNombre());
-        System.out.println("Curso:/n"+aux.getCurso());
     }
     
-    public void searchAlumno(String curso){//Mostrar alumnos de un curso indicado
-        for(Alumno aux: this.mapAlumnos.values()){
-            if(aux.getCurso().equals(curso)){
-                System.out.println("Nombre del alumno:"+aux.getNombre()+"\n");
-                System.out.println("Curso:"+aux.getCurso()+"\n");
-            }
-        }
-    }
+  
     
     
 }
