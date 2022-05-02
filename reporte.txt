@@ -1,0 +1,8 @@
+Nombre profesor: Pep Guardiola
+ RUT: 1.336.818-0Asignatura: HistoriaEnunciado: Elija el sinonimo de la palabra: FelizTematica: SinonimosPuntaje: 5Alternativa 0: EnojadoAlternativa 1: BlindadoAlternativa 2: ContentoEnunciado: Elija el sinonimo de la palabra: MaldadTematica: SinonimosPuntaje: 5Alternativa 0: LocuraAlternativa 1: MaliciaAlternativa 2: Belleza/////////////////////////////
+Nombre profesor: Peineta Garces
+ RUT: 3.449.188-7Asignatura: Lenguaje/////////////////////////////
+Nombre: Francisco Huaiquipan /RUT: 5.131.266-6
+/////////////////////////////
+Nombre: Santiago Muñez /RUT: 7.771.313-0
+/////////////////////////////

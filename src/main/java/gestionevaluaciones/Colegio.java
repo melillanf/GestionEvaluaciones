@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gestionevaluaciones;
+import java.io.*;
 import java.util.*;
 /**
  *
@@ -65,7 +66,50 @@ public class Colegio {
         System.out.println("Nombre del alumno:/n"+aux.getNombre());
     }
     
-  
+    public void crearReporte(){
+                            try{
+                        System.out.println("Creando reporte");
+                        BufferedWriter escritorBw;
+                        File reporte = new File("reporte.txt");
+                        FileWriter w = new FileWriter(reporte);
+                        BufferedWriter bw = new BufferedWriter(w);
+                        PrintWriter wr = new PrintWriter(bw);
+                        if(!reporte.exists()){//Verificar si el archivo no existe
+                            reporte.createNewFile();//Se crea
+                        }
+                        Set<String> keysProfesores = this.mapProfesor.keySet();
+                        Set<String> keysAlumnos = this.mapAlumnos.keySet();
+                        int contReport = 0;
+                        for(String key:keysProfesores){
+                            Profesor auxProfesor = mapProfesor.get(key);
+                            wr.write("Nombre profesor: "+auxProfesor.getNombre()+"\n RUT: "+auxProfesor.getRut()+"Asignatura: "+auxProfesor.getRamoAsignado().getNombreAsignatura());
+                            Set<Integer> keysPreguntas = auxProfesor.getRamoAsignado().getBancoDePreguntas().keySet();
+                            System.out.println("Preguntas almacenadas en la asignatura: \n");
+                            for(int id:keysPreguntas){
+                                Pregunta auxPregunta = auxProfesor.getRamoAsignado().getBancoDePreguntas().get(id);
+                                wr.write("Enunciado: "+auxPregunta.getEnunciado());
+                                wr.write("Tematica: "+auxPregunta.getTematica());
+                                wr.write("Puntaje: "+auxPregunta.getPuntos());
+                                for(int i=0;i<auxPregunta.getAlternativas().size();i++){
+                                String auxAlternativa = auxPregunta.getAlternativas().get(i);
+                                wr.write("Alternativa "+i+": "+auxAlternativa);
+                                }
+                            }
+                            wr.write("/////////////////////////////\n");
+                            contReport++;//TESTING
+                        } 
+                        for(String key:keysAlumnos){
+                               Alumno auxAlumno = this.mapAlumnos.get(key);
+                               wr.write("Nombre: "+auxAlumno.getNombre()+" /RUT: "+auxAlumno.getRut()+"\n");
+                               wr.write("/////////////////////////////\n");
+                            }
+                        wr.close();
+                        bw.close();
+                        System.out.println("Reporte creado exitosamente");
+                    }
+                    catch(IOException dou){
+                    }
+    }
     
     
 }

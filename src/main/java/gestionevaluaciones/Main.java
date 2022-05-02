@@ -15,7 +15,9 @@ public class Main {
         //Variables y datos iniciales
         Colegio mainColegio = new Colegio();
         Asignatura lenguaje = new Asignatura();
+        lenguaje.setNombreAsignatura("Lenguaje");
         Asignatura historia = new Asignatura();
+        historia.setNombreAsignatura("Historia");
         Profesor profe1 = new Profesor("1.336.818-0", "Pep Guardiola", historia);
         Profesor profe2 = new Profesor("3.449.188-7", "Peineta Garces", lenguaje);
         
@@ -81,6 +83,7 @@ public class Main {
                         System.out.println("3. Mostrar preguntas almacenadas\n");
                         System.out.println("4. Eliminar pregunta\n");
                         System.out.println("5. Modificar pregunta\n");
+                        System.out.println("6. Crear reporte\n");
                         System.out.println("0. Salir\n");
                         int option = lector1.nextInt();
                         
@@ -100,14 +103,17 @@ public class Main {
                             case 4:{//Eliminar pregunta almacenada
                                 admin.eliminarPregunta();
                                 break;
-                        }
+                            }
                             case 5:{//Mod pregunta almacenada
-                            admin.getRamoAsignado().modPregunta();
-                        }
-                        case 0:{//Salir
-                        flaggy = false;
-                        break;
-                        }
+                                admin.getRamoAsignado().modPregunta();
+                            }
+                            case 6:{
+                                mainColegio.crearReporte();
+                            }
+                            case 0:{//Salir
+                                flaggy = false;
+                                break;
+                            }
                     }
                     }while(flaggy);    
                 }
