@@ -70,7 +70,7 @@ public class Main {
             System.out.println("0.Salir");
             op = lector.nextInt();
             switch(op){
-                case 1:{//Vista Profesor add, create, delete n show
+                case 1:{//Vista Profesor add, create, delete, show y reporte
                     boolean flaggy = true;
                     do{
                         System.out.println("Ingrese su rut: \n");
@@ -109,6 +109,7 @@ public class Main {
                             }
                             case 6:{
                                 mainColegio.crearReporte();
+                                break;
                             }
                             case 0:{//Salir
                                 flaggy = false;
@@ -118,7 +119,7 @@ public class Main {
                     }while(flaggy);    
                 }
                 case 2:{//Vista Alumno hacer prueba y ver notas
-                    
+                    //No implementado aun
                 }
                 case 0:{
                    flag = false;

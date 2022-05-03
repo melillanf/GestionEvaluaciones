@@ -135,14 +135,14 @@ public class Pregunta {
                     break;
                 }
                 case 2:{//Mod Alternativas
-                    System.out.println("Alternativas actuales: \n");
+                    System.out.println("Alternativas actuales: \n");//Mostrar alternativas
                     this.showAlternativas();
                     System.out.println("Ingrese las nuevas alternativas: ");
                     ArrayList<String> nuevasAlternativas = new ArrayList<>();
-                    for(int i=0;i<this.alternativas.size();i++){
+                    for(int i=0;i<this.alternativas.size();i++){//Ingresar las nuevas alternativas
                        nuevasAlternativas.add(lector.nextLine());
                     }
-                    this.setAlternativas(nuevasAlternativas);
+                    this.setAlternativas(nuevasAlternativas);//Set nuevas alternativas
                     break;
                 }
                 case 3:{//Mod Tematica

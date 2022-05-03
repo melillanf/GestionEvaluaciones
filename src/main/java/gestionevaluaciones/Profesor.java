@@ -50,8 +50,8 @@ public class Profesor {
     
     public void addAlumno(Colegio mainColegio){
         Alumno nuevo = new Alumno();
-        nuevo.crearAlumno();//Crea manualmente @ Alumno
-        this.getRamoAsignado().getListaAlumnos().put(nuevo.getRut(), nuevo);
+        nuevo.crearAlumno();//Crea manualmente @ class Alumno
+        this.getRamoAsignado().getListaAlumnos().put(nuevo.getRut(), nuevo);//Insercion nuevo alumno en la asignatura
         if(!mainColegio.getMapAlumnos().containsKey(nuevo.getRut())){//Verifica si el nuevo alumno existe dentro del colegio, si no esta lo guarda
             mainColegio.addAlumno(nuevo);
         }
